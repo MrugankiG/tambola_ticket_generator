@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tambola_ticket_generator/ticket.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,6 +9,22 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+  List<List<String>> tamBoard = List<List<String>>.generate(
+      3, (i) => List<String>.generate(9, (i) => " "),
+      growable: false);
+  void gen() {
+    setState(() {
+      TambolaTicketGenerator t = new TambolaTicketGenerator();
+      tamBoard = t.Generate();
+    });
+  }
+
+  @override
+  void initState() {
+    gen();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,41 +46,41 @@ class _MyAppState extends State<MyApp> {
                 TableRow(
                   decoration: BoxDecoration(color: Colors.lightBlueAccent,),
                   children: [
-                  Column(children: [Text('1', style: TextStyle(fontSize: 20.0)),]),
-                  Column(children: [Text('  ', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('25', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('31', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('  ', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('56', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('  ', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('70', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('  ', style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[0][0], style: TextStyle(fontSize: 20.0)),]),
+                  Column(children: [Text(tamBoard[0][1], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[0][2], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[0][3], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[0][4], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[0][5], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[0][6], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[0][7], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[0][8], style: TextStyle(fontSize: 20.0))]),
                 ]),
                 TableRow(
                   decoration: BoxDecoration(color: Colors.lightBlueAccent,),
                   children: [
-                  Column(children: [Text('  ', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('10', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('29', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('  ', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('40', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('  ', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('65', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('  ', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('88', style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[1][0], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[1][1], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[1][2], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[1][3], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[1][4], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[1][5], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[1][6], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[1][7], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[1][8], style: TextStyle(fontSize: 20.0))]),
                 ]),
                 TableRow(
                   decoration: BoxDecoration(color: Colors.lightBlueAccent,),
                   children: [
-                  Column(children: [Text('4', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('13', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('  ', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('38', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('  ', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('59', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('  ', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('73', style: TextStyle(fontSize: 20.0))]),
-                  Column(children: [Text('89', style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[2][0], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[2][1], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[2][2], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[2][3], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[2][4], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[2][5], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[2][6], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[2][7], style: TextStyle(fontSize: 20.0))]),
+                  Column(children: [Text(tamBoard[2][8], style: TextStyle(fontSize: 20.0))]),
                 ]
                 ),
               ],
@@ -72,7 +89,7 @@ class _MyAppState extends State<MyApp> {
             Container(
               child: OutlinedButton(  
                 child: Text('New', style: TextStyle(fontSize: 20.0),),  
-                onPressed: () {},  
+                onPressed: () {gen();},  
               ),  
 
             ),
